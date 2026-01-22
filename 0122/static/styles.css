@@ -1,0 +1,34 @@
+/* 聊天訊息的共用樣式 */
+.message {
+    max-width: 75%;
+    padding: 10px 15px;
+    border-radius: 20px;
+    margin-bottom: 10px;
+    line-height: 1.5;
+    position: relative;
+    word-wrap: break-word;
+}
+
+/* 使用者的訊息：靠右，藍色 */
+.user-message {
+    background-color: #0d6efd; /* Bootstrap Primary Color */
+    color: white;
+    align-self: flex-end; /* Flexbox 靠右對齊 */
+    border-bottom-right-radius: 5px;
+    margin-left: auto; /* 強制靠右 */
+}
+
+/* AI 的訊息：靠左，灰色 */
+.ai-message {
+    background-color: #e9ecef;
+    color: #333;
+    align-self: flex-start; /* Flexbox 靠左對齊 */
+    border-bottom-left-radius: 5px;
+    margin-right: auto;
+}
+
+/* 聊天框框設定為 Flex 佈局，方便排版 */
+#chat-box {
+    display: flex;
+    flex-direction: column;
+}
