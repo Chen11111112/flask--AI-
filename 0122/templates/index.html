@@ -1,22 +1,56 @@
 {% extends "base.html" %}
 
-{% block title %}首頁 - Gemini AI{% endblock %}
+{% block title %}首頁 - AI 客服系統{% endblock %}
 
 {% block content %}
-    <div class="card shadow">
-        <div class="card-header bg-primary text-white">
-            <h4>與 Gemini 對話</h4>
-        </div>
-        <div class="card-body" id="chat-box" style="height: 400px; overflow-y: auto;">
-            <div class="text-center text-muted mt-5">
-                <p>你好！請在下方輸入訊息開始對話。</p>
+<div class="container mt-4">
+    <ul class="nav nav-tabs mb-4" id="myTab" role="tablist">
+        <li class="nav-item" role="presentation">
+            <button class="nav-link active" id="chat-tab" data-bs-toggle="tab" data-bs-target="#chat-pane" type="button" role="tab">AI 聊天對話</button>
+        </li>
+        <li class="nav-item" role="presentation">
+            <button class="nav-link" id="complaint-tab" data-bs-toggle="tab" data-bs-target="#complaint-pane" type="button" role="tab" onclick="loadComplaints()">客訴記錄管理</button>
+        </li>
+    </ul>
+
+    <div class="tab-content" id="myTabContent">
+        <div class="tab-pane fade show active" id="chat-pane" role="tabpanel">
+            <div class="card shadow border-0">
+                <div class="card-header bg-primary text-white">
+                    <h5 class="mb-0">與 Gemini 對話</h5>
+                </div>
+                <div class="card-body" id="chat-box" style="height: 450px; overflow-y: auto; background-color: #f8f9fa;">
+                    <div class="text-center text-muted mt-5" id="welcome-msg">
+                        <p>你好！請在下方輸入訊息開始對話。</p>
+                    </div>
+                </div>
+                <div class="card-footer bg-white">
+                    <form id="chat-form" class="d-flex gap-2">
+                        <input type="text" id="user-input" class="form-control" placeholder="輸入你的問題..." required>
+                        <button type="submit" class="btn btn-primary px-4">發送</button>
+                    </form>
+                </div>
             </div>
         </div>
-        <div class="card-footer">
-            <form id="chat-form" class="d-flex gap-2">
-                <input type="text" id="user-input" class="form-control" placeholder="輸入你的問題..." required>
-                <button type="submit" class="btn btn-primary">發送</button>
-            </form>
+
+        <div class="tab-pane fade" id="complaint-pane" role="tabpanel">
+            <div class="card shadow-sm mb-4 border-0">
+                <div class="card-body">
+                    <h5 class="card-title text-warning">撰寫客訴信</h5>
+                    <textarea id="complaint-text" class="form-control" rows="3" placeholder="請詳細描述您的問題..."></textarea>
+                    <button id="submit-complaint" class="btn btn-warning mt-2 text-dark">提交客訴</button>
+                </div>
+            </div>
+
+            <div class="card shadow-sm border-0">
+                <div class="card-body">
+                    2&lt;5
+                    <h5 class="card-title">歷史客訴記錄</h5>
+                    <div id="complaint-list" class="list-group list-group-flush mt-3">
+                        </div>
+                </div>
+            </div>
         </div>
     </div>
+</div>
 {% endblock %}
